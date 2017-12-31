@@ -2,9 +2,7 @@
     <h3>Users</h3>
     <form>
         <label for="search">Search : </label>
-        <input name="search" type="text"
-               ng-model="searchKey"
-               ng-keyup="$event.keyCode == 13 && search(searchKey)">
+        <input name="search" type="text" ng-model="searchKey" ng-model-options="{ debounce: 100 }">
     </form>
     <hr/>
     <div>
@@ -40,7 +38,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr dir-paginate="user in users | itemsPerPage:pageSize">
+          <tr dir-paginate="user in users | orderBy:propertyName:reverse | filter:searchKey | itemsPerPage:pageSize">
             <td>{{user.id}}</td>
             <td>
               <button class="w3-btn w3-ripple" ng-click="editUser($event, user.id)">&#9998; Edit</button>

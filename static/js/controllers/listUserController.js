@@ -19,28 +19,9 @@ app.controller("listUserController", ["$scope", "$location", "$window", "userMng
     $scope.propertyName = "";
     $scope.reverse = false;
     $scope.sortBy = function(name) {
-        if (!name)  {
-            getUsers();
-            return;
-        }
-
         // reverse : true - decrease order, false - increase order
         $scope.reverse = ($scope.propertyName === name) ? !$scope.reverse : false;
         $scope.propertyName = name;
-        let order = $scope.reverse ? "DESC" : "ASC";
-        userMngService.orderBy(name, order)
-        .then(function(response) {
-            $scope.users = response.data;
-        });
-    }
-
-    $scope.search = function(key) {
-        console.log("search");
-        if (!key)   getUsers();
-        userMngService.search(key)
-        .then(function(response) {
-            $scope.users = response.data;
-        });
     }
 
     $scope.createUser = function($event) {

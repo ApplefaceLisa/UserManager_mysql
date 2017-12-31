@@ -68,27 +68,6 @@ router.post('/', function(req, res) {
     });
 });
 
-// search user (accessed at GET http://localhost:8080/users/search?q="...")
-router.get('/search', function(req, res) {
-    let searchKey = req.query.q;
-    console.log("search for "+searchKey);
-    res.end();
-});
-
-// sort user (accessed at GET http://localhost:8080/users/sort?orderBy="..."&order="...")
-router.get('/sort', function(req, res) {
-    let orderBy = req.query.orderBy;
-    let order = req.query.order;
-    let sql = "SELECT * FROM users ORDER BY " + orderBy + " " + order;
-    connection.query(sql, (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json(result);
-        }
-    });
-});
-
 // get user by id (accessed at GET http://localhost:8080/users/:user_id)
 router.get('/:user_id', function(req, res) {
     var sql = "SELECT * FROM users WHERE id = ?";

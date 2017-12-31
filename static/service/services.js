@@ -126,12 +126,12 @@ angular.module("customServices", [])
         });
     }
 
-    service.search = function(key) {
+    service.search = function(searchby, key) {
         let url = users_url + "/search";
         return $http({
             method : "GET",
             url : url,
-            params : {q : key}
+            params : {searchby : searchby, key : key}
         });
     }
 
