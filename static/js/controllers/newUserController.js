@@ -32,7 +32,7 @@ app.controller("newUserController", ["$scope", "$location", "userMngService", fu
 
   $scope.addUser = function($event, usrObj) {
     $event.preventDefault();
-    userMngService.createUser("/users", usrObj)
+    userMngService.createUser(usrObj)
     .then(function(res) {
       $location.path("/");
     });

@@ -73,26 +73,27 @@ angular.module("customServices", [])
 })
 .factory("userMngService", ["$http", function($http) {
     var service = {};
+    var users_url = "/users";
 
     /************************************************/
     /* RESTful API */
-    service.getUsers = function(url) {
+    service.getUsers = function() {
+        return $http({
+            method : "GET",
+            url : users_url
+        });
+    };
+
+    service.getUserById = function(id) {
+        let url = users_url + "/" + id;
         return $http({
             method : "GET",
             url : url
         });
     };
 
-    service.getUserById = function(url, id) {
-        url += "/" + id;
-        return $http({
-            method : "GET",
-            url : url
-        });
-    };
-
-    service.updateUser = function(url, id, user) {
-        url += "/" + id;
+    service.updateUser = function(id, user) {
+        let url = users_url + "/" + id;
         return $http({
             method : "PUT",
             url : url,
@@ -100,27 +101,37 @@ angular.module("customServices", [])
         });
     };
 
-    service.createUser = function(url, user) {
+    service.createUser = function(user) {
         return $http({
             method : "POST",
-            url : url,
+            url : users_url,
             data : user
         });
     };
 
-    service.deleteUser = function(url, id) {
-        url += "/" + id;
+    service.deleteUser = function(id) {
+        let url = users_url + "/" + id;
         return $http({
             method : "DELETE",
             url : url
         });
     };
     /************************************************/
-    service.orderBy = function(url, name, order) {
+    service.orderBy = function(name, order) {
+        let url = users_url + "/sort";
         return $http({
             method : "GET",
             url : url,
             params : {orderBy: name, order: order}
+        });
+    }
+
+    service.search = function(key) {
+        let url = users_url + "/search";
+        return $http({
+            method : "GET",
+            url : url,
+            params : {q : key}
         });
     }
 

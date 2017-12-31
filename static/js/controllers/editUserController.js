@@ -3,7 +3,7 @@ app.controller("editUserController", ["$scope", "$routeParams", "$location", "$w
   $scope.id = userId;
   $scope.dataReady = false;
 
-  userMngService.getUserById("/users", userId)
+  userMngService.getUserById(userId)
   .then(function(res) {
       $scope.user = res.data;
       $scope.dataReady = true;
@@ -40,7 +40,7 @@ app.controller("editUserController", ["$scope", "$routeParams", "$location", "$w
 
   $scope.editUser = function($event) {
     $event.preventDefault();
-    userMngService.updateUser("/users", userId, $scope.user)
+    userMngService.updateUser(userId, $scope.user)
     .then(function(res) {
       $location.path("/");
     }, function(res) {
