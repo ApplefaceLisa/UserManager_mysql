@@ -50,6 +50,13 @@ To create an expressJS application that:
 [repo](https://github.com/ApplefaceLisa/MEAN_User-Manager.git)
 
 # mySQL
+## Homework 5
+This homework is to enhance this app in the following way:
+To create an expressJS application that
+1. use a database table in mySQL or a collection in MongoDB to store user information,
+2. an expressJS model layer (User) to implement all database calls via mysql or mongoose
+
+
 ### [Using MySQL Database from Node.js [Guide]](https://www.freelancer.com/community/articles/using-mysql-database-from-node-js-guide)
 ### [Using MySQL with Node.js & the mysql JavaScript Client](https://www.sitepoint.com/using-node-mysql-javascript-client/)
 #### How to use MySQL in Node in 5 easy steps
